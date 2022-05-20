@@ -14,5 +14,10 @@ if(isset($_SESSION['username'])){
 </head>
 <body>
     <h1>Hello World</h1>
+    <a href="login.php">Logout</a>
+    <?php
+    session_destroy();
+    ?>
+
 </body>
 </html>
