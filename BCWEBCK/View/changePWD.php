@@ -17,7 +17,7 @@
         <input type="password" name="new_password" id="new_password">
         <label for="confirm_password">Confirm Password</label>
         <input type="password" name="confirm_password" id="confirm_password">
-        <input type="submit" name="change_password" value="change_password">
+        <input type="submit" name="changePassword" value="change_password">
         <button type="button" onclick="window.location.href='../View/home.php'">Cancel</button>
     </form>
 </body>

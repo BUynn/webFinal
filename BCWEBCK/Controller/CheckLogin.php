@@ -8,10 +8,11 @@
         $password = $_POST['password'];
         $sql = "SELECT * FROM __account WHERE username = '$username' AND password = '$password'";
         $result = mysqli_query($conn,$sql);
+        $_SESSION['username'] = $username;
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             if($row['status'] == 1){
-                $_SESSION['username'] = $username;
+               
                 //set cookie
                 setcookie('username',$username,time()+3600);
                //set session for log in 

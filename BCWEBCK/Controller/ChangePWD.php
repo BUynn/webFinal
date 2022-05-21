@@ -2,7 +2,7 @@
     require_once 'Config.php';
     ob_start();
     session_start();
-    if(isset($_POST['change_password'])){
+    if(isset($_POST['changePassword'])){
         $old_password = $_POST['old_password'];
         $new_password = $_POST['new_password'];
         $confirm_password = $_POST['confirm_password'];

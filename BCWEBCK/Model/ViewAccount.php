@@ -13,11 +13,13 @@
         $email = $row['email'];
         $phone = $row['phone'];
         $dob = $row['dob'];
+       //if isVerified = 0 $status = not verified else verified
+        if($row['isVerify'] == 0){
+            $status = "Not verified";
+        }else{
+            $status = "Verified";
+        }
+       
     }
-    //get data to form
-    
-
-
-
 
 ?>

@@ -14,6 +14,7 @@
         <input type="password" name="password" id="password">
         <input type="submit" name="login" value="login">
         <a href="../View/register.php">Register</a>
+        <a href="../View/VerifyUser.php">Rest Password</a>
     </form>
 </body>
 </html>
