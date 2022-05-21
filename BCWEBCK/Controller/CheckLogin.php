@@ -12,9 +12,10 @@
         $result = mysqli_query($conn,$sql);
         if(mysqli_num_rows($result) > 0){
             $_SESSION['username'] = $username;
-            header("Location: ../View/index.php");
+            header("Location: ../View/home.php");
         }else{
-            echo "Login failed";
+           //set text to html wrong username or password
+            echo "Wrong username or password";
         }
     }
 ?>
