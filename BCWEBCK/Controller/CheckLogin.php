@@ -8,20 +8,28 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     $sql = "SELECT * FROM __account WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
+
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $username;
-        $sql1 = "UPDATE __account SET error = 0, abnormal = 0, timeblock = null WHERE username = '$username'";
-        mysqli_query($conn, $sql1);
-        if ($row['status'] == 1) {
-            //set cookie
-            setcookie('username', $username, time() + 3600);
-            //set session for log in
-
-            header('Location: ../View/home.php');
+        if ($row['abnormal'] == 3) {
+            showAlert("Account has been locked due to entering the wrong password many times, please contact the administrator for support", '../View/login.php');
         } else {
-
-            header('Location: ../View/changeFirstPassword.php');
+            if ($row['abnormal'] == 3) {
+                showAlert("Account has been locked due to entering the wrong password many times, please contact the administrator for support", '../View/login.php');
+            } else {
+                $_SESSION['username'] = $username;
+                $sql1 = "UPDATE __account SET error = 0, abnormal = 0, timeblock = null WHERE username = '$username'";
+                mysqli_query($conn, $sql1);
+                if ($row['status'] == 1) {
+                    //set cookie
+                    setcookie('username', $username, time() + 3600);
+                    //set session for log in
+                    $href = '../View/home.php';
+                } else {
+                    $href = '../View/changeFirstPassword.php';
+                }
+                showAlert("Login successfully", $href);
+            }
         }
     } else {
         //update error +1 after 1 time wrong
@@ -29,6 +37,9 @@ if (isset($_POST['login'])) {
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
+            if ($row['abnormal'] == 3) {
+                showAlert("Account has been locked due to entering the wrong password many times, please contact the administrator for support", '../View/login.php');
+            }
             $error = $row['error'];
             $abnormal = $row['abnormal'];
             $timeblock = $row['timeblock'];
@@ -45,31 +56,30 @@ if (isset($_POST['login'])) {
                     if ($error < 3) {
                         $sql = "UPDATE __account SET error = '$error' WHERE username = '$username'";
                     } else {
-                        $sql = "DELETE FROM __account WHERE username = '$username'";
+                        $sql = "UPDATE __account SET error = 0, abnormal = 3 WHERE username = '$username'";
                     }
                 }
                 $result = mysqli_query($conn, $sql);
-                showAlert("Invalid username or password. You have " . (3 - $error) . " more attempts");
+                showAlert("Invalid username or password. You have " . (3 - $error) . " more attempts", '../View/login.php');
             } else {
                 $timediff = strtotime($timestamp) - strtotime($timeblock);
                 if ($timediff <= 60) {
-                    showAlert('Your account has been blocked. Please try after ' . 60 - $timediff . ' seconds');
+                    showAlert('Your account has been blocked. Please try after ' . 60 - $timediff . ' seconds', '../View/login.php');
                     $result = mysqli_query($conn, $sql);
                 } else {
                     $sql = "UPDATE __account SET error = 1, abnormal = 2, timeblock = null WHERE username = '$username'";
                     $result = mysqli_query($conn, $sql);
-                    showAlert("Invalid username or password. You have " . (3 - $error) . " more attempts");
+                    showAlert("Invalid username or password. You have " . (3 - $error) . " more attempts", '../View/login.php');
                 }
             }
         }
     }
 }
 
-function showAlert($message)
+function showAlert($message, $href)
 {
     echo "<script>
     alert('$message');
-    window.location.href='../View/login.php';
+    window.location.href='$href';
     </script>";
 }
-?>

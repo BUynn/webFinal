@@ -40,9 +40,19 @@
             if(mysqli_query($conn, $sql_insert)){
                 move_uploaded_file($image_front_id_tmp, $image_front_id_destination);
                 move_uploaded_file($image_back_id_tmp,$image_back_id_destination);
+
+            
                 
             }else{
                 echo "Error: " . $sql_insert . "<br>" . mysqli_error($conn);
+            }
+
+            //insert into __money
+            $sql_insert_money = "INSERT INTO __money(username,money) VALUES('$username',0)";
+            if(mysqli_query($conn, $sql_insert_money)){
+                echo "";
+            }else{
+                echo "Error: " . $sql_insert_money . "<br>" . mysqli_error($conn);
             }
             //send mail
             sendMail($username, $password, $email);

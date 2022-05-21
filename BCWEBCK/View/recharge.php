@@ -11,15 +11,21 @@
                 <form action="../Controller/Recharge.php" method="POST">
                 <div class="form-group">
                     <label for="">Account Number</label>
-                    <input type="text" class="form-control" id="account_number" placeholder="Enter account number">
+                    <input type="text" class="form-control" name="card" placeholder="Enter account number">
                 </div>
                 <div class="form-group">
                     <label for="">Amount</label>
-                    <input type="text" class="form-control" id="amount" placeholder="Enter amount">
+                    <input type="text" class="form-control" name="amount" placeholder="Enter amount">
                 </div>
                 <div class="form-group">
                    
-                    <input type="submit" class="form-control" id="recharge" placeholder="Recharge">
+                    <input type="submit" class="form-control" name="recharge" placeholder="Recharge">
+                    <div class="back">
+                        <a href="../View/home.php">Back</a>
+                    </div>
+  
+                   
+
                 </div>
                 </form>
         </div>
