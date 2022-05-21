@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `_acount`
+-- Table structure for table `__acount`
 --
 
-CREATE TABLE `_acount` (
+CREATE TABLE `__acount` (
   `phone` varchar(15) DEFAULT NULL,
   `email` varchar(30) NOT NULL,
   `dob` date DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `_acount` (
 --
 -- Indexes for table `_acount`
 --
-ALTER TABLE `_acount`
+ALTER TABLE `__acount`
   ADD PRIMARY KEY (`email`),
   ADD UNIQUE KEY `phone` (`phone`),
   ADD UNIQUE KEY `email` (`email`);
