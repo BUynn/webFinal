@@ -14,6 +14,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
         <input type="submit" name="register" value="register">
+        <a href="../View/login.php">Login</a>
     </form>
 </body>
 </html>

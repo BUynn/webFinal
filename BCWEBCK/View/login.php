@@ -13,6 +13,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password">
         <input type="submit" name="login" value="login">
+        <a href="../View/register.php">Register</a>
     </form>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-    require_once 'Config.php';
+    require_once '../Controller/Config.php';
     ob_start();
     session_start();
     //view account
