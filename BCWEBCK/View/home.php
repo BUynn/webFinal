@@ -1,11 +1,11 @@
 
 <?php
-session_start();
-if(isset($_SESSION['username'])){
-    echo "Welcome ".$_SESSION['username'];
-}else{
-    header("Location: login.php");
-}
+    require_once '../Controller/CheckLogin.php';
+    if(isset($_SESSION['username'])){
+        echo "Welcome ".$_SESSION['username'];
+    }else{
+        header("Location: login.php");
+    }  
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,15 +14,13 @@ if(isset($_SESSION['username'])){
 </head>
 <body>
     <div>
-        <?php
-            echo "Hello ".$_SESSION['username'];
-        ?>
-
+        <a href="../View/changePWD.php">Change Password</a>
     </div>
-        <a href="login.php">Logout</a>
-        <?php
-        session_destroy();
-        ?>
+    
+    <div>
+        <a href="../Controller/Logout.php">Logout</a>
+    </div>
+
 </body>
 <!-- hello username -->
 
