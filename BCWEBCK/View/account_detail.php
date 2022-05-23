@@ -79,18 +79,15 @@
                             <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="enter phone number" value="<?php echo $phone ?>" disabled></div>
                             <div class="col-md-12"><label class="labels">Date of Birth</label></label><input type="text" class="form-control" placeholder="enter address line 1" value="<?php echo $dob ?>" disabled></div>
                             <div class="col-md-12"><label class="labels">Status</label></label><input type="text" class="form-control" placeholder="enter address line 1" value="<?php echo $status ?>" disabled></div>
+
+                            <image src="<?php echo $image_front_id ?>"> </image>
+                            <image src="<?php echo $image_back_id ?>"> </image>
                             
                         </div>
                     
                         
                     </div>
                 </div>
-                <!-- <div class="col-md-4">
-                    <div class="p-3 py-5"></div>
-                        <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                        <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-                    </div>
-                </div> -->
             </div>
 
 </form>

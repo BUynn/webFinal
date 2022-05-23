@@ -11,6 +11,8 @@
             $email = $row['email'];
             $phone = $row['phone'];
             $dob = $row['dob'];
+            $image_front_id = $row['frontImg'];
+            $image_back_id = $row['backImg'];
               
             //if isVerified = 0 $status = not verified else verified
             if($row['isVerify'] == 0){

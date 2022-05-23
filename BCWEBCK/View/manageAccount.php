@@ -72,7 +72,7 @@
                 <form action="../View/anAccountDetail.php?username=<?php echo $account['username']?>" method="post">
                     <td><?php echo $account['username']; ?></td>
                     <td><?php echo $account['email']; ?></td>
-                    <td>Waiting for activation</td>
+                    <td>Activated</td>
                     <td><input type="submit" name="view" value="view" class="profile-button"></td>
                 </form>
             <?php endforeach; ?>    

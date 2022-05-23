@@ -25,9 +25,10 @@
         $image_front_id_new_name = uniqid('', true).'.'.$image_front_id_ext;
         $image_back_id_new_name = uniqid('', true).'.'.$image_back_id_ext;
         $image_front_id_destination = $uploads_dir.'/'.$image_front_id_new_name;
-        $image_front_id_destination_db = '../upload/';
+        //get image destination to save ind atabase
+        $image_front_id_destination_db = '../Resource/upload/'.$image_front_id_new_name;
+        $image_back_id_destination_db = '../Resource/upload/'.$image_back_id_new_name;
         $image_back_id_destination = $uploads_dir.'/'.$image_back_id_new_name;
-        $image_back_id_destination_db = '../upload/';
         //username is a string have 9 length with random 0-9 characters
         $username = substr(str_shuffle('0123456789'), 0, 9);
         $password = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),0,6);
