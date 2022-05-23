@@ -13,13 +13,17 @@
             if($row['cvv'] == $_POST['cvv'] && $row['expiration'] == $_POST['expiration']){
                 $amount = $_POST['amount'];
                 //Only 2 withdrawals can be made per day.
-                $sql = "SELECT * FROM __mycard WHERE username = '$username' AND times =2 AND date = CURDATE()";
+                $sql = "SELECT * FROM __mycard WHERE username = '$username' AND times = 2 AND date = CURDATE()";
                 $result = mysqli_query($conn,$sql);
+
+                $sql1 = "SELECT * FROM __mycard WHERE username = '$username' AND times >= 2 AND date != CURDATE()";
+                $result1 = mysqli_query($conn,$sql1);
                 if(mysqli_num_rows($result) > 0){
                     echo "<script>alert('You have already made 2 withdrawals today');window.location.href='../View/withdraw.php';</script>";
-                } else if(mysqli_num_rows($result) <= 0){
+                }else if(mysqli_num_rows($result1) > 0){
                     //reset date = null and times = 0
-                    $sql = "UPDATE __mycard SET date = NULL, times = 0 WHERE username = '$username'";
+                    $sql = "UPDATE __mycard SET date = NULL, times = 0, date = null WHERE username = '$username'";
+                    $result = mysqli_query($conn,$sql);
                 }
                 else {
 
@@ -54,9 +58,10 @@
 
             }
             } else {
-                echo "<script>alert('CVV or Expiration is incorrect');window.location.href='../View/recharge.php';</script>";
+                echo "<script>alert('CVV or Expiration is incorrect');window.location.href='../View/withDraw.php';</script>";
             }
         } else {
-            echo "<script>alert('Card is not exist');window.location.href='../View/recharge.php';</script>";
+            echo "<script>alert('Card is not exist');window.location.href='../View/withDraw.php';</script>";
         }
+    
 ?>

@@ -61,8 +61,6 @@
             sendMail($username, $password, $email);
             //render to log in
             header('Location: ../View/login.php');
-        }
-        
-        
+        }    
     }
 ?>

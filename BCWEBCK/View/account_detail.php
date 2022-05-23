@@ -83,9 +83,7 @@
                             <image src="<?php echo $image_front_id ?>"> </image>
                             <image src="<?php echo $image_back_id ?>"> </image>
                             
-                        </div>
-                    
-                        
+                        </div>                        
                     </div>
                 </div>
             </div>
