@@ -2,8 +2,7 @@
     require 'Config.php';
     require_once 'SendMail.php';
     $uploads_dir = '../Resource/upload';
-    ob_start();
-    session_start();
+    
     //check register
     if(isset($_POST['register'])){
         $phone = $_POST['phone'];
@@ -49,11 +48,14 @@
 
             //insert into __money
             $sql_insert_money = "INSERT INTO __money(username,money) VALUES('$username',0)";
+            //insert into __paymentRecharge
+            
             if(mysqli_query($conn, $sql_insert_money)){
                 echo "";
             }else{
                 echo "Error: " . $sql_insert_money . "<br>" . mysqli_error($conn);
             }
+         
             //send mail
             sendMail($username, $password, $email);
             //render to log in

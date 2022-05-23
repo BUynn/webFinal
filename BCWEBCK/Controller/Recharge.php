@@ -24,9 +24,15 @@
                     $money = $money + $amount;
                     $sql = "UPDATE __money SET money = '$money' WHERE username = '$username'";
                     $result = mysqli_query($conn,$sql);
+                    echo "<script>alert('Recharge Successfully');window.location.href='../View/home.php';</script>";
                 }
-            }
-            else if($row['cardnumber'] == 333333 ){               
+                //insert into __historyrecharge
+                $sql = "INSERT INTO __historyrecharge(username,cardnumber,amount,date)
+                VALUES('$username','$row[cardnumber]','$amount',CURDATE())";
+                $result = mysqli_query($conn,$sql);
+               
+
+            } else if($row['cardnumber'] == 333333 ){               
                 //check money >= 10
                 $amount = $_POST['amount'];
                 $sql = "SELECT * FROM __money WHERE username = '$username'";
@@ -49,17 +55,26 @@
                     $money = $money + $amount;
                     $sql = "UPDATE __money SET money = '$money' WHERE username = '$username'";
                     $result = mysqli_query($conn,$sql);
+                    echo "<script>alert('Recharge Successfully');window.location.href='../View/home.php';</script>";
                 }
+                $sql = "INSERT INTO __historyrecharge(username,cardnumber,amount,date)
+                VALUES('$username','$row[cardnumber]','$amount',CURDATE())";
+                $result = mysqli_query($conn,$sql);
             }
-            if($result){
-                echo "<script>alert('Recharge Successfully');window.location.href='../View/home.php';</script>";
-            }else{
-                echo "<script>alert('Recharge Failed');window.location.href='../View/recharge.php';</script>";
-            }            
-        
-
+            //get day time now(YYYY-MM-DD)
+           
+            $sql = "INSERT INTO __historyrecharge(username,cardnumber,amount,date)
+            VALUES('$username','$row[cardnumber]','$amount',)";
+            $result = mysqli_query($conn,$sql);
+            //get cvv and expiration from table __card
+            $getcvv = "SELECT * FROM __card WHERE cardNumber = '$_POST[card]'";
+            $result = mysqli_query($conn,$getcvv);
+            $rowS = mysqli_fetch_assoc($result);
+            $sql = "INSERT INTO __mycard(username,cardnumber,cvv,expiration)
+            VALUES('$username','$rowS[cardnumber]','$rowS[cvv]','$rowS[expiration]')";
+            $result = mysqli_query($conn,$sql);
         } else {
-            echo "<script>alert('Recharge Failed');window.location.href='../View/recharge.php';</script>";
+            echo "<script>alert('This card is not supported');window.location.href='../View/recharge.php';</script>";
         }
         
     }
