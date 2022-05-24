@@ -1,0 +1,92 @@
+<?php
+
+    require '../Model/AcceptTrade.php'
+ ?>
+<html>
+<head>
+    <title>Accept Trade</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="back">
+        <a href="../View/home.php">Back</a>
+    </div>
+    <h3>Trade List Wait For Accept</h3>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">CardNumber</th>
+                <th scope="col">Money</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+       <tbody>
+            <?php foreach($result as $account): ?>
+                <tr>
+                    <form action="../Model/AcceptTrade.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
+                        <td><?php echo $account['username']; ?></td>
+                        <td><?php echo $account['cardnumber']; ?></td>
+                        <td><?php echo $account['money']; ?></td>
+                        <td><?php echo $account['date']; ?></td>
+                        <td><input type="submit" name="accept" value="Accept Trade" class="profile-button"></td>
+                        <td><input type="submit" name="deny" value="Deny Trade" class="profile-button"></td>
+                    </form>
+                </tr>
+            <?php endforeach; ?>    
+       </tbody>
+    </table>
+    <h3>Trade Accept</h3>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">CardNumber</th>
+                <th scope="col">Money</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+       <tbody>
+            <?php foreach($result2 as $account): ?>
+                <tr>
+                    <form action="../Model/AcceptTrade.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
+                        <td><?php echo $account['username']; ?></td>
+                        <td><?php echo $account['cardnumber']; ?></td>
+                        <td><?php echo $account['money']; ?></td>
+                        <td><?php echo $account['date']; ?></td>
+                
+                    </form>
+                </tr>
+            <?php endforeach; ?>    
+       </tbody>
+    </table>
+
+    <h3>Trade Deny</h3>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">CardNumber</th>
+                <th scope="col">Money</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+       <tbody>
+            <?php foreach($result1 as $account): ?>
+                <tr>
+                    <form action="../Model/AcceptTrade.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
+                        <td><?php echo $account['username']; ?></td>
+                        <td><?php echo $account['cardnumber']; ?></td>
+                        <td><?php echo $account['money']; ?></td>
+                        <td><?php echo $account['date']; ?></td>
+                
+                    </form>
+                </tr>
+            <?php endforeach; ?>    
+       </tbody>
+    </table>
+
+</body>
+</html>

@@ -22,10 +22,15 @@
             <h2>Sign In</h2>
             <input type="text" name="username" id="username" placeholder="Username" />
             <input type="password" name="password" placeholder="Password" />
-            <input  type="submit" name="login" value="login"/>
+            <input  type="submit" name="login" value="Login"/>
             <p class="signup">
               Don't have an account ?
               <a href="#" onclick="toggleForm();">Sign Up.</a>
+            </p>
+
+            <p class="signup">
+            Forgot your password ?
+              <a href="../View/VerifyUser.php">Reset now</a>
             </p>
           </form>
         </div>

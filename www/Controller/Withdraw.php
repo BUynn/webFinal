@@ -34,20 +34,28 @@
                         $row = mysqli_fetch_assoc($result);
                         $money = $row['money'];
                         if($money >= $amount){
-                            $money = $money - ($amount*0.05);
-                            $sql = "UPDATE __money SET money = '$money' WHERE username = '$username'";
-                            $result = mysqli_query($conn,$sql);
-                            //insert into __historywithdraw
-                            //get date now
-                            $date = date('Y-m-d');
-                            //get times form __mycard
-                            $sql = "SELECT * FROM __mycard WHERE cardNumber = '$_POST[card]'";
-                            $result = mysqli_query($conn,$sql);
-                            $row = mysqli_fetch_assoc($result);
-                            $times = $row['times']+1;
-                            $sql = "UPDATE __mycard SET money = '$amount', date = '$date', times = '$times' WHERE cardNumber = '$_POST[card]' and username = '$username'";
-                                      
-                            $result = mysqli_query($conn,$sql);
+                           if($money > 5000000){
+                                //insert into __accepwithdraw
+                                $sql = "INSERT INTO __accepwithdraw (username,cardnumber,money,date,isAccepted)
+                                 VALUES ('$username','$_POST[card]','$amount',CURDATE(),0)";
+                                $result = mysqli_query($conn,$sql);
+                                echo "<script>alert('Your Money is more than 5 Million. Wait for accept withdraw from admin');window.location.href='../View/withdraw.php';</script>";
+                           } else {
+                                $money = $money - ($amount +($amount*0.05));
+                                $sql = "UPDATE __money SET money = '$money' WHERE username = '$username'";
+                                $result = mysqli_query($conn,$sql);
+                                //insert into __historywithdraw
+                                //get date now
+                                $date = date('Y-m-d');
+                                //get times form __mycard
+                                $sql = "SELECT * FROM __mycard WHERE cardNumber = '$_POST[card]'";
+                                $result = mysqli_query($conn,$sql);
+                                $row = mysqli_fetch_assoc($result);
+                                $times = $row['times']+1;
+                                $sql = "UPDATE __mycard SET money = '$amount', date = '$date', times = '$times' WHERE cardNumber = '$_POST[card]' and username = '$username'";
+                                        
+                                $result = mysqli_query($conn,$sql);
+                           }
                             echo "<script>alert('Withdraw Successfully');window.location.href='../View/withdraw.php';</script>";
                         } else {
                             echo "<script>alert('Not enough money');window.location.href='../View/withdraw.php';</script>";

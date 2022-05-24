@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 24, 2022 at 07:23 AM
+-- Generation Time: May 24, 2022 at 02:44 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -36,8 +36,8 @@ CREATE TABLE `__account` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) DEFAULT NULL,
   `status` int(2) DEFAULT NULL,
+  `isActived` int(2) NOT NULL DEFAULT 0,
   `error` int(11) DEFAULT NULL,
-  `isVerify` int(2) DEFAULT 0,
   `role` int(2) DEFAULT 0,
   `abnormal` int(2) DEFAULT 0,
   `OTP` int(34) NOT NULL,
@@ -48,8 +48,9 @@ CREATE TABLE `__account` (
 -- Dumping data for table `__account`
 --
 
-INSERT INTO `__account` (`phone`, `email`, `dob`, `frontImg`, `backImg`, `username`, `password`, `status`, `error`, `isVerify`, `role`, `abnormal`, `OTP`, `timeblock`) VALUES
-('0332420477', 'admin@gmail.com', '2022-05-19', '../Resource/upload/628b59d3ea1124.42378319.jpg', '../Resource/upload/628b59d3ea1523.76749906.jpg', '524396180', '123456', 1, 0, 1, 1, 0, 0, NULL);
+INSERT INTO `__account` (`phone`, `email`, `dob`, `frontImg`, `backImg`, `username`, `password`, `status`, `isActived`, `error`, `role`, `abnormal`, `OTP`, `timeblock`) VALUES
+('0829908030', 'dphuytdt@gmail.com', '2022-05-10', '../Resource/upload/628cd26ceaf2f4.52743013.jpg', '../Resource/upload/628cd26ceaf3f8.59686693.jpg', '059482671', 'g5yAVc', 0, 0, 0, 0, 0, 0, NULL),
+('0332420477', 'admin@gmail.com', '2022-05-19', '../Resource/upload/628b59d3ea1124.42378319.jpg', '../Resource/upload/628b59d3ea1523.76749906.jpg', '524396180', '123456', 1, 1, 0, 1, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,17 @@ INSERT INTO `__historyrecharge` (`id`, `username`, `cardnumber`, `dateRecharge`,
 (4, '524396180', 222222, '2022-05-23', 56000),
 (5, '524396180', 222222, '2022-05-23', 56000),
 (6, '524396180', 333333, '2022-05-23', 56000),
-(7, '524396180', 333333, '2022-05-23', 56000);
+(7, '524396180', 333333, '2022-05-23', 56000),
+(8, '524396180', 111111, '2022-05-24', 56000),
+(9, '524396180', 111111, '2022-05-24', 56000),
+(10, '524396180', 111111, '2022-05-24', 56000),
+(11, '524396180', 111111, '2022-05-24', 56000),
+(12, '524396180', 222222, '2022-05-24', 56000),
+(13, '524396180', 222222, '2022-05-24', 56000),
+(14, '524396180', 222222, '2022-05-24', 56000),
+(15, '524396180', 222222, '2022-05-24', 56000),
+(16, '524396180', 222222, '2022-05-24', 56000),
+(17, '524396180', 222222, '2022-05-24', 56000);
 
 -- --------------------------------------------------------
 
@@ -140,7 +151,8 @@ CREATE TABLE `__money` (
 --
 
 INSERT INTO `__money` (`username`, `money`) VALUES
-('524396180', 448000);
+('059482671', 0),
+('524396180', 1005200);
 
 -- --------------------------------------------------------
 
@@ -149,11 +161,12 @@ INSERT INTO `__money` (`username`, `money`) VALUES
 --
 
 CREATE TABLE `__mycard` (
+  `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `cardnumber` int(6) NOT NULL,
   `expiration` date NOT NULL,
   `cvv` int(3) NOT NULL,
-  `money` int(30) NOT NULL,
+  `money` int(30) NOT NULL DEFAULT 0,
   `date` date DEFAULT NULL,
   `times` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -162,8 +175,8 @@ CREATE TABLE `__mycard` (
 -- Dumping data for table `__mycard`
 --
 
-INSERT INTO `__mycard` (`username`, `cardnumber`, `expiration`, `cvv`, `money`, `date`, `times`) VALUES
-('524396180', 222222, '2022-11-11', 443, 0, '2022-05-23', 0);
+INSERT INTO `__mycard` (`id`, `username`, `cardnumber`, `expiration`, `cvv`, `money`, `date`, `times`) VALUES
+(4, '524396180', 222222, '2022-11-11', 443, 56000, '2022-05-24', 2);
 
 --
 -- Indexes for dumped tables
@@ -205,7 +218,7 @@ ALTER TABLE `__money`
 -- Indexes for table `__mycard`
 --
 ALTER TABLE `__mycard`
-  ADD PRIMARY KEY (`username`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -221,7 +234,13 @@ ALTER TABLE `__buyphonecard`
 -- AUTO_INCREMENT for table `__historyrecharge`
 --
 ALTER TABLE `__historyrecharge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `__mycard`
+--
+ALTER TABLE `__mycard`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

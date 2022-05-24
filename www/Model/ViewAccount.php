@@ -16,7 +16,7 @@
         $image_front_id = $row['frontImg'];
         $image_back_id = $row['backImg'];
        //if isVerified = 0 $status = not verified else verified
-        if($row['isVerify'] == 0){
+        if($row['isActived'] == 0){
             $status = "Not verified";
         }else{
             $status = "Verified";

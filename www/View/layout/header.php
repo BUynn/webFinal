@@ -24,26 +24,52 @@
         ?>  
       <ul class="nav navbar-nav navbar-right">
        
-        <li>
+       
+       
+       
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transfer<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li>
+                <li><a href="../View/recharge.php">Recharge</a></li>
+            </li>
+            <li class="active">
+                <li><a href="../View/withDraw.php">Withdraw</a></li>
+            </li>
+            <li>
+                <li><a href="../View/transfer.php">Transfer Money</a></li>
+            </li>                 
+            </ul>
+        </li>
+        
+       
+        
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li>                
+                <a href="../View/manageAccount.php">Manage Account</a>
+            </li>
+            <li>
+                <a href="../View/acceptTrade.php">Accept Trade List</a> 
+            </li>  
+            <li>
+                <a href="../View/acceptTransfer.php">Accept Transfer List</a> 
+            </li>                   
+            </ul>
+        </li>
+        
          
-          <a href="../View/manageAccount.php">Manage Account</a>
-
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li>
+            <li><a href="../View/account_detail.php">My Profile</a> </li>
         </li>
         <li>
             <li><a href="../View/changePWD.php">Change Password</a></li>
-        </li>
-        <li>
-            <li><a href="../View/recharge.php">Recharge</a></li>
-        </li>
-        
-        <li class="active">
-            <li><a href="../View/withDraw.php">Withdraw</a></li>
-        </li>
-        <li>
-            <li><a href="../View/transfer.php">Transfer Money</a></li>
-        </li>
-        <li>
-            <li><a href="../View/account_detail.php">My Profile</a> </li>
+        </li>            
+            </ul>
         </li>
         <li>
             <li><a a href="../Controller/Logout.php">Log out </a> </li>

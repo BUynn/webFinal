@@ -21,7 +21,8 @@
                 <form action="../Controller/Transfer.php" method="POST">
                 <div class="form-group">
                     <label for="">Account Transfer to</label>
-                    <input type="text" class="form-control" name="account" placeholder="Enter username as account">
+                    <input type="text" class="form-control" name="account" placeholder="Enter username as account" >
+                   
                 </div>
                 <div class="form-group">
                     <label for="">Amount</label>

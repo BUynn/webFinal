@@ -1,0 +1,49 @@
+<?php
+    require('../Controller/Config.php');
+    require '../Controller/SendMailTransfer.php';
+    //select from __accepttransfer
+    $sql = "SELECT * FROM __accepttransfer WHERE isAccepted = 0";
+    $result = mysqli_query($conn,$sql);
+    $sql1 = "SELECT * FROM __accepttransfer WHERE isAccepted = 2";
+    $result1 = mysqli_query($conn,$sql1);
+    $sql2 = "SELECT * FROM __accepttransfer WHERE isAccepted = 1";
+    $result2 = mysqli_query($conn,$sql2);
+
+    if(isset($_POST['accept'])){
+        $id = $_GET['transfer'];
+        $sql_getTransferInfo = "SELECT * FROM __accepttransfer WHERE id = $id";
+        $result_getTransferInfo = mysqli_query($conn,$sql_getTransferInfo);
+        $row_getTransferInfo = mysqli_fetch_assoc($result_getTransferInfo);
+
+        $moneyTransfer = $row_getTransferInfo['amount'];
+        $usernameSend = $row_getTransferInfo['usernamesend'];
+        $usernameReceive = $row_getTransferInfo['username'];
+
+        //update __accepttransfer
+        $sql = "UPDATE __accepttransfer SET isAccepted = 1 where id = $id";
+        mysqli_query($conn,$sql);
+        //update __money set money = money - $money where username = $username
+        $sql = "UPDATE __money SET money = money - '$moneyTransfer' WHERE username = '$usernameSend'";
+        mysqli_query($conn,$sql);
+        //update __mycard set money = money + $money where username = $username
+        $sql = "UPDATE __money SET money = money + '$moneyTransfer' WHERE username = '$usernameReceive'";
+        mysqli_query($conn,$sql);
+        //select from account
+        $sql = "SELECT * FROM __account WHERE username = '$usernameReceive'";
+        $result = mysqli_query($conn,$sql);
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            $email = $row['email'];
+            sendMailTransfer($email,$moneyTransfer,$usernameSend);
+            echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
+        }
+
+    }
+
+    if(isset($_POST['deny'])){
+        $id = $_GET['transfer'];
+        $sql = "UPDATE __accepttransfer SET isAccepted = 2 where id = $id";
+        $result = mysqli_query($conn,$sql);
+        echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
+    }
+?>
