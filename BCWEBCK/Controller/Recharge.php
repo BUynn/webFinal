@@ -20,22 +20,23 @@
                 $result = mysqli_query($conn,$sql);
                 $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                 $result = mysqli_query($conn,$sql);
-                $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."'";
+                $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."' AND cardnumber = '$card'" ;
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result) > 0){
                     $row = mysqli_fetch_assoc($result);
                     //update __card
-                    $money = $row['money'] + $_POST['amount'];
-                    $times= $row['times'] + 1;
-                    //get date
+                    // $money = $row['money'] + $_POST['amount'];
+                    // $times= $row['times'] + 1;
                     $date = date('Y-m-d');
                     //update money and times
-                    $sql = "UPDATE __mycard SET money = '$money' and date = '$date' and times = '$times'  WHERE cardnumber = '$card'";
+                    $sql = "UPDATE __mycard SET money = money + ".$_POST['amount']." and date = '$date' and times = times + '1'
+                    WHERE  username = '".$_SESSION['username']."'";;
                     $result = mysqli_query($conn,$sql);
                 } else {
                     //insert into __mycard
-                    $sql = "INSERT INTO __mycard(username,cardnumber,money,times) 
-                            VALUES ('".$_SESSION['username']."','$card','".$_POST['amount']."',1)";
+                    $sql = "INSERT INTO __mycard(username,cardnumber,expiration,cvv,money,date,times)
+                    VALUES ('".$_SESSION['username']."','$card','$expiration','$cvv','".$_POST['amount']."','".date('Y-m-d')."','1')";
+                  
                     $result = mysqli_query($conn,$sql);
                 }   
                 if($result){
@@ -51,24 +52,27 @@
                     $sql = "INSERT INTO __historyrecharge(username,cardnumber,dateRecharge,value) 
                             VALUES ('".$_SESSION['username']."','$card','".date('Y-m-d')."','".$_POST['amount']."')";
                     $result = mysqli_query($conn,$sql);
+                    
                     $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                     $result = mysqli_query($conn,$sql);
-                    $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."'";
+                    $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."' AND cardnumber = '$card'" ;
                     $result = mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result) > 0){
                         $row = mysqli_fetch_assoc($result);
                         //update __card
-                        $money = $row['money'] + $_POST['amount'];
-                        $times= $row['times'] + 1;
+                        // $money = $row['money'] + $_POST['amount'];
+                        // $times= $row['times'] + 1;
                         //get date
                         $date = date('Y-m-d');
                         //update money and times
-                        $sql = "UPDATE __mycard SET money = '$money' and date = '$date' and times = '$times'  WHERE cardnumber = '$card'";
+                        $sql = "UPDATE __mycard SET money = money + ".$_POST['amount']." and date = '$date' and times = times + '1'
+                        WHERE  username = '".$_SESSION['username']."'";;
                         $result = mysqli_query($conn,$sql);
                     } else {
                         //insert into __mycard
-                        $sql = "INSERT INTO __mycard(username,cardnumber,money,times) 
-                                VALUES ('".$_SESSION['username']."','$card','".$_POST['amount']."',1)";
+                        $sql = "INSERT INTO __mycard(username,cardnumber,expiration,cvv,money,date,times)
+                        VALUES ('".$_SESSION['username']."','$card','$expiration','$cvv','".$_POST['amount']."','".date('Y-m-d')."','1')";
+                      
                         $result = mysqli_query($conn,$sql);
                     }   
                     if($result){
@@ -87,26 +91,24 @@
                 //update __money
                 $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                 $result = mysqli_query($conn,$sql);
-                $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."'";
+                $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."' AND cardnumber = '$card'" ;
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result) > 0){
                     $row = mysqli_fetch_assoc($result);
                     //update __card
-                    $money = $row['money'] + $_POST['amount'];
-                    $times= $row['times'] + 1;
+                    // $money = $row['money'] + $_POST['amount'];
+                    // $times= $row['times'] + 1;
                     //get date
                     $date = date('Y-m-d');
                     //update money and times
-                    $sql = "UPDATE __mycard SET money = '$money' and date = '$date' and times = '$times'  WHERE cardnumber = '$card'";
+                    $sql = "UPDATE __mycard SET money = money + ".$_POST['amount']." and date = '$date' and times = times + '1'
+                    WHERE  username = '".$_SESSION['username']."'";;
                     $result = mysqli_query($conn,$sql);
                 } else {
                     //insert into __mycard
-                      $money = $row['money'] + $_POST['amount'];
-                    $times= $row['times'] + 1;
-                    //get date
-                    $date = date('Y-m-d');
-                    $sql = "INSERT INTO __mycard(username,cardnumber,money,times) 
-                            VALUES ('".$_SESSION['username']."','$card','".$_POST['amount']."',1)";
+                    $sql = "INSERT INTO __mycard(username,cardnumber,expiration,cvv,money,date,times)
+                    VALUES ('".$_SESSION['username']."','$card','$expiration','$cvv','".$_POST['amount']."','".date('Y-m-d')."','1')";
+                  
                     $result = mysqli_query($conn,$sql);
                 }   
                 echo "<script>alert('Card is out of money');window.location.href='../View/recharge.php';</script>";
