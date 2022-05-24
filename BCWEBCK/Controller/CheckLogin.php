@@ -20,7 +20,11 @@ if (isset($_POST['login'])) {
                 $_SESSION['username'] = $username;
                 $sql1 = "UPDATE __account SET error = 0, abnormal = 0, timeblock = null WHERE username = '$username'";
                 mysqli_query($conn, $sql1);
-                if ($row['status'] == 1) {
+                if($row['isActived'] == 0){
+                    showAlert("Waiting for Activied", '../View/login.php');
+                    echo "abc";
+                }
+                else if ($row['status'] == 1) {
                     //set cookie
                     setcookie('username', $username, time() + 3600);
                     //set session for log in

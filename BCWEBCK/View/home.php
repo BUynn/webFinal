@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../Resource/css/header.css">
+    <link rel="stylesheet" href="../Resource/css/footer.css">
     <script src="../Resource/js/header.js"></script>
     
    
@@ -17,6 +18,7 @@
     <?php
         require 'layout/header.php';
     ?>
+   
 </body>
 </html>
 

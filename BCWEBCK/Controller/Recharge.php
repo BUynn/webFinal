@@ -20,25 +20,6 @@
                 $result = mysqli_query($conn,$sql);
                 $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                 $result = mysqli_query($conn,$sql);
-                $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."' AND cardnumber = '$card'" ;
-                $result = mysqli_query($conn,$sql);
-                if(mysqli_num_rows($result) > 0){
-                    $row = mysqli_fetch_assoc($result);
-                    //update __card
-                    // $money = $row['money'] + $_POST['amount'];
-                    // $times= $row['times'] + 1;
-                    $date = date('Y-m-d');
-                    //update money and times
-                    $sql = "UPDATE __mycard SET money = money + ".$_POST['amount']." and date = '$date' and times = times + '1'
-                    WHERE  username = '".$_SESSION['username']."'";;
-                    $result = mysqli_query($conn,$sql);
-                } else {
-                    //insert into __mycard
-                    $sql = "INSERT INTO __mycard(username,cardnumber,expiration,cvv,money,date,times)
-                    VALUES ('".$_SESSION['username']."','$card','$expiration','$cvv','".$_POST['amount']."','".date('Y-m-d')."','1')";
-                  
-                    $result = mysqli_query($conn,$sql);
-                }   
                 if($result){
                     echo "<script>alert('Recharge success');window.location.href='../View/recharge.php';</script>";
                 }
@@ -55,26 +36,7 @@
                     
                     $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                     $result = mysqli_query($conn,$sql);
-                    $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."' AND cardnumber = '$card'" ;
-                    $result = mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result) > 0){
-                        $row = mysqli_fetch_assoc($result);
-                        //update __card
-                        // $money = $row['money'] + $_POST['amount'];
-                        // $times= $row['times'] + 1;
-                        //get date
-                        $date = date('Y-m-d');
-                        //update money and times
-                        $sql = "UPDATE __mycard SET money = money + ".$_POST['amount']." and date = '$date' and times = times + '1'
-                        WHERE  username = '".$_SESSION['username']."'";;
-                        $result = mysqli_query($conn,$sql);
-                    } else {
-                        //insert into __mycard
-                        $sql = "INSERT INTO __mycard(username,cardnumber,expiration,cvv,money,date,times)
-                        VALUES ('".$_SESSION['username']."','$card','$expiration','$cvv','".$_POST['amount']."','".date('Y-m-d')."','1')";
-                      
-                        $result = mysqli_query($conn,$sql);
-                    }   
+                   
                     if($result){
                         echo "<script>alert('Recharge success');window.location.href='../View/recharge.php';</script>";
                     }
@@ -91,26 +53,8 @@
                 //update __money
                 $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                 $result = mysqli_query($conn,$sql);
-                $sql = "SELECT * FROM __mycard WHERE username = '".$_SESSION['username']."' AND cardnumber = '$card'" ;
-                $result = mysqli_query($conn,$sql);
-                if(mysqli_num_rows($result) > 0){
-                    $row = mysqli_fetch_assoc($result);
-                    //update __card
-                    // $money = $row['money'] + $_POST['amount'];
-                    // $times= $row['times'] + 1;
-                    //get date
-                    $date = date('Y-m-d');
-                    //update money and times
-                    $sql = "UPDATE __mycard SET money = money + ".$_POST['amount']." and date = '$date' and times = times + '1'
-                    WHERE  username = '".$_SESSION['username']."'";;
-                    $result = mysqli_query($conn,$sql);
-                } else {
-                    //insert into __mycard
-                    $sql = "INSERT INTO __mycard(username,cardnumber,expiration,cvv,money,date,times)
-                    VALUES ('".$_SESSION['username']."','$card','$expiration','$cvv','".$_POST['amount']."','".date('Y-m-d')."','1')";
-                  
-                    $result = mysqli_query($conn,$sql);
-                }   
+               
+              
                 echo "<script>alert('Card is out of money');window.location.href='../View/recharge.php';</script>";
                
             }

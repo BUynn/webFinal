@@ -78,7 +78,7 @@
             <?php endforeach; ?>    
        </tbody>
     </table>
-
+<!-- 
     <table>
         <thead>
             <tr>
@@ -95,6 +95,29 @@
                     <td><?php echo $account['email']; ?></td>
                     <td>Waiting for activation</td>
                     <td><input type="submit" name="view" value="view" class="profile-button"></td>
+                </form>
+            </tr>
+            <?php endforeach; ?>    
+       </tbody>
+    </table> -->
+
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+       <tbody>
+            <?php foreach($result2 as $account): ?>
+            <tr>
+                <form action="../Model/ActiveAccount.php" method="post">
+                    <td><?php echo $account['username']; ?></td>
+                    <td><?php echo $account['email']; ?></td>
+                    <td>Waiting for activation</td>
+                    <td><input type="submit" name="active" value="Active" class="profile-button"></td>
                 </form>
             </tr>
             <?php endforeach; ?>    
