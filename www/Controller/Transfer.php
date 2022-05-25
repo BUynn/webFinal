@@ -39,7 +39,8 @@
                     $result = mysqli_query($conn,$sql);
                     $row = mysqli_fetch_assoc($result);
                     $email = $row['email'];
-                    sendMailTransfer($email,$amount,$_SESSION['username']);
+                    $content = "You have received $amount from $usernamesend";
+                    sendMail($email, $content);
                     echo "<script>alert('Transfer Successfully');window.location.href='../View/transfer.php';</script>";
                }
             } else {

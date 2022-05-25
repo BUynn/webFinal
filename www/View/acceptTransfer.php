@@ -51,11 +51,11 @@
        <tbody>
             <?php foreach($result2 as $account): ?>
                 <tr>
-                    <form action="../Model/AcceptTransfer.php" method="post">
+                    <form  action="../View/anAccountDetail.php?username=<?php echo $account['username']?>" method="post">
                         <td><?php echo $account['username']; ?></td>
                         <td><?php echo $account['amount']; ?></td>
                         <td><?php echo $account['date']; ?></td>
-                
+                        <td><input type="submit" name="view" value="View" class="profile-button"></td>
                     </form>
                 </tr>
             <?php endforeach; ?>    
@@ -74,11 +74,11 @@
        <tbody>
             <?php foreach($result1 as $account): ?>
                 <tr>
-                    <form action="../Model/AcceptTransfer.php?money=<?php echo $account['amount']?>&username=<?php echo $account['username']?>" method="post">
+                <form  action="../View/anAccountDetail.php?username=<?php echo $account['username']?>" method="post">
                         <td><?php echo $account['username']; ?></td>
                         <td><?php echo $account['amount']; ?></td>
                         <td><?php echo $account['date']; ?></td>
-                
+                        <td><input type="submit" name="view" value="View" class="profile-button"></td>
                     </form>
                 </tr>
             <?php endforeach; ?>    

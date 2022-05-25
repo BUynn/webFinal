@@ -1,6 +1,6 @@
 <?php
     require('../Controller/Config.php');
-    require '../Controller/SendMailTransfer.php';
+    require '../Controller/SendMail.php';
     //select from __accepttransfer
     $sql = "SELECT * FROM __accepttransfer WHERE isAccepted = 0";
     $result = mysqli_query($conn,$sql);
@@ -34,7 +34,7 @@
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             $email = $row['email'];
-            sendMailTransfer($email,$moneyTransfer,$usernameSend);
+            sendMail($email,$moneyTransfer,$usernameSend);
             echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
         }
 
@@ -44,6 +44,18 @@
         $id = $_GET['transfer'];
         $sql = "UPDATE __accepttransfer SET isAccepted = 2 where id = $id";
         $result = mysqli_query($conn,$sql);
+        //get email
+        $sql = "SELECT * FROM __accepttransfer WHERE id = $id";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_assoc($result);
+        $username = $row['username'];
+        //get email from account
+        $sql = "SELECT * FROM __account WHERE username = '$username'";
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_assoc($result);
+        $email = $row['email'];
+        $content = "Your request has been denied!";
+        sendMail($email,$content);
         echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
     }
 ?>

@@ -16,12 +16,12 @@
                     $result = mysqli_query($conn,$sql);
                     if($result){
                         //render to home
-                        header('Location: ../View/home.php');
+                        echo "<script>alert('Success');window.location.href='../View/home.php';</script>";
                     }else{
-                        echo "Change password fail";
+                        echo "<script>alert('Change password fail');window.location.href='../View/changeFirstPassword.php';</script>";
                     }
                 }else{
-                    echo "Confirm password not match";
+                    echo "<script>alert('Confirm password not match');window.location.href='../View/changeFirstPassword.php';</script>";
                 }
             }
 

@@ -51,7 +51,7 @@
                 <a href="../View/manageAccount.php">Manage Account</a>
             </li>
             <li>
-                <a href="../View/acceptTrade.php">Accept Trade List</a> 
+                <a href="../View/acceptWithDraw.php">Accept Withdraw List</a> 
             </li>  
             <li>
                 <a href="../View/acceptTransfer.php">Accept Transfer List</a> 

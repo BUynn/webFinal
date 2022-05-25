@@ -21,19 +21,19 @@
                 <form action="../Controller/Withdraw.php" method="POST">
                 <div class="form-group">
                     <label for="">Card Number</label>
-                    <input type="text" class="form-control" name="card" placeholder="Enter card number">
+                    <input type="text" class="form-control" name="card" placeholder="Enter card number" required>
                 </div>
                 <div class="form-group">
                     <label for="">Expiration</label>
-                    <input type="date" class="form-control" name="expiration" placeholder="Enter Expiration">
+                    <input type="date" class="form-control" name="expiration" placeholder="Enter Expiration" required>
                 </div>
                 <div class="form-group">
                     <label for="">CVV</label>
-                    <input type="text" class="form-control" name="cvv" placeholder="Enter cvv">
+                    <input type="text" class="form-control" name="cvv" placeholder="Enter cvv" required>
                 </div>
                 <div class="form-group">
                     <label for="">Amount</label>
-                    <input type="text" class="form-control" name="amount" placeholder="Enter amount">
+                    <input type="text" class="form-control" name="amount" placeholder="Enter amount" required>
                 </div>
                 <div class="form-group">
                    

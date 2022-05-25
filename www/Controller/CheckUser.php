@@ -19,7 +19,7 @@
             $sendOTP = new SendOTP();
             $sendOTP->sendOTP($username,$email);
             //render to check otp
-            header('Location: ../View/resetPassword.php');
+            echo "<script>alert('Success');window.location.href='../View/resetPassword.php';</script>";
         }else{
             echo($username . ".");
         }

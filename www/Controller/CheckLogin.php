@@ -2,17 +2,28 @@
 require_once 'Config.php';
 ob_start();
 session_start();
+function showAlert($message, $href)
+{
+    echo "<script>
+    alert('$message');
+    window.location.href='$href';
+    </script>";
+}
 if (isset($_POST['login'])) {
     //log in user and save session cookie
     $username = $_POST['username'];
     $password = $_POST['password'];
+    if ($username == "" || $password == "") {
+        showAlert("username or password cannot be null", '../View/login.php');
+    } else {
     $sql = "SELECT * FROM __account WHERE username = '$username' AND password = '$password'";
     $result = mysqli_query($conn, $sql);
-
+    //check usernmae or password null
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         if ($row['abnormal'] == 3) {
-            showAlert("Account has been locked due to entering the wrong password many times, please contact the administrator for support", '../View/login.php');
+            showAlert("Account has been locked due to entering the wrong password many times, 
+            please contact the administrator for support", '../View/login.php');
         } else {
             if ($row['abnormal'] == 3) {
                 showAlert("Account has been locked due to entering the wrong password many times, please contact the administrator for support", '../View/login.php');
@@ -80,10 +91,5 @@ if (isset($_POST['login'])) {
     }
 }
 
-function showAlert($message, $href)
-{
-    echo "<script>
-    alert('$message');
-    window.location.href='$href';
-    </script>";
+
 }

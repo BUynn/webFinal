@@ -1,6 +1,6 @@
 <?php
 
-    require '../Model/AcceptTrade.php'
+    require '../Model/AcceptWithDraw.php'
  ?>
 <html>
 <head>
@@ -26,7 +26,7 @@
        <tbody>
             <?php foreach($result as $account): ?>
                 <tr>
-                    <form action="../Model/AcceptTrade.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
+                    <form action="../Model/AcceptWithDraw.php?withdraw=<?php echo $account['id'];?>"" method="post">
                         <td><?php echo $account['username']; ?></td>
                         <td><?php echo $account['cardnumber']; ?></td>
                         <td><?php echo $account['money']; ?></td>
@@ -51,7 +51,7 @@
        <tbody>
             <?php foreach($result2 as $account): ?>
                 <tr>
-                    <form action="../Model/AcceptTrade.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
+                    <form action="../Model/AcceptWithDraw.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
                         <td><?php echo $account['username']; ?></td>
                         <td><?php echo $account['cardnumber']; ?></td>
                         <td><?php echo $account['money']; ?></td>
@@ -76,7 +76,7 @@
        <tbody>
             <?php foreach($result1 as $account): ?>
                 <tr>
-                    <form action="../Model/AcceptTrade.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
+                    <form action="../Model/AcceptWithDraw.php?money=<?php echo $account['money']?>&username=<?php echo $account['username']?>" method="post">
                         <td><?php echo $account['username']; ?></td>
                         <td><?php echo $account['cardnumber']; ?></td>
                         <td><?php echo $account['money']; ?></td>

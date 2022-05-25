@@ -5,7 +5,7 @@
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/SMTP.php';
     require 'Config.php';
-    function sendMail($username,$password,$email){
+    function sendMail($email,$content){
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -22,8 +22,8 @@
             $mail->setFrom('dphuytdt@gmail.com', 'Wallets Mailer(no reply)');
             $mail->addAddress($email);     // Add a recipien
             $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'Account information';
-            $mail->Body    = 'Username: '.$username.'<br>Password: '.$password;
+            $mail->Subject = 'Transfer Money';
+            $mail->Body    = $content;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();

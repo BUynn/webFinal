@@ -21,19 +21,19 @@
                 <form action="../Controller/Recharge.php" method="POST">
                 <div class="form-group">
                     <label for="">Account Number</label>
-                    <input type="text" class="form-control" name="card" placeholder="Enter account number">
+                    <input type="text" class="form-control" name="card" placeholder="Enter account number" required>
                 </div>
                 <div class="form-group">
                     <label for="">Expiration</label>
-                    <input type="date" class="form-control" name="expiration" placeholder="Enter Expiration">
+                    <input type="date" class="form-control" name="expiration" placeholder="Enter Expiration" required>
                 </div>
                 <div class="form-group">
                     <label for="">CVV</label>
-                    <input type="text" class="form-control" name="cvv" placeholder="Enter CVV">
+                    <input type="text" class="form-control" name="cvv" placeholder="Enter CVV" required>
                 </div>
                 <div class="form-group">
                     <label for="">Amount</label>
-                    <input type="text" class="form-control" name="amount" placeholder="Enter amount">
+                    <input type="text" class="form-control" name="amount" placeholder="Enter amount" required>
                 </div>
                 <div class="form-group">
                    

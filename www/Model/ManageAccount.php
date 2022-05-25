@@ -12,4 +12,11 @@
     $sql2 = "SELECT * FROM __account where isActived = 0";
     $result2 = mysqli_query($conn,$sql2);
 
+    //SELECT * FROM __account where abnormal = 3 sort by desc date
+    $sql3 = "SELECT * FROM __account where abnormal = 3 order by timeblock desc";
+    $result3 = mysqli_query($conn,$sql3);
+
+    //select account isActived
+    $sql4 = "SELECT * FROM __account where isActived = 2 order by datecreate desc";
+    $result4 = mysqli_query($conn,$sql4);
 ?>

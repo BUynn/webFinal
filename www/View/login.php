@@ -20,8 +20,8 @@
         <div class="formBx">
           <form action="../Controller/CheckLogin.php" method="post">
             <h2>Sign In</h2>
-            <input type="text" name="username" id="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
+            <input type="text" name="username" id="username" placeholder="Username"  required/>
+            <input type="password" name="password" placeholder="Password" required />
             <input  type="submit" name="login" value="Login"/>
             <p class="signup">
               Don't have an account ?
@@ -39,15 +39,15 @@
         <div class="formBx">
           <form action="../Controller/CheckRegister.php" enctype="multipart/form-data" method="post">
           
-            <input type="text" name="phone" placeholder="Phone" />
+            <input type="text" name="phone" placeholder="Phone" required />
          
-            <input type="email" name="email" placeholder="Email Address" />
+            <input type="email" name="email" placeholder="Email Address" required />
            
-            <input type="date" name="dob" placeholder="Date of birth" />
+            <input type="date" name="dob" placeholder="Date of birth" required />
             <label>Image front Identity Card</label>
-            <input type="file" name="image_front_id" placeholder="Image front Identity Card" />
+            <input type="file" name="image_front_id" placeholder="Image front Identity Card" required/>
             <label>Image back Identity Card</label>
-            <input type="file" name="image_back_id" placeholder="Image back Identity Card" />
+            <input type="file" name="image_back_id" placeholder="Image back Identity Card" required />
             <input type="submit" name="register" value="Register"/>
             <p class="signup">
               Already have an account ?
