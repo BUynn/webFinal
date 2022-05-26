@@ -34,6 +34,10 @@
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
             $email = $row['email'];
+            $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+            VALUES ('transfer','$moneyTransfer',NOW(),1)";
+                               
+            $result = mysqli_query($conn,$sql);
             sendMail($email,$moneyTransfer,$usernameSend);
             echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
         }
@@ -53,9 +57,13 @@
         $sql = "SELECT * FROM __account WHERE username = '$username'";
         $result = mysqli_query($conn,$sql);
         $row = mysqli_fetch_assoc($result);
+        $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+        VALUES ('transfer','0',NOW(),2)";
+        $result = mysqli_query($conn,$sql);
         $email = $row['email'];
         $content = "Your request has been denied!";
-        sendMail($email,$content);
+        $title = "Request Denied";
+        sendMail($email,$content,$title);
         echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
     }
 ?>

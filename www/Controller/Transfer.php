@@ -1,6 +1,6 @@
 <?php
     require 'config.php';
-    require '../Controller/SendMailTransfer.php';
+    require '../Controller/SendMail.php';
     ob_start();
     session_start();
     if(isset($_POST['recharge'])){
@@ -39,11 +39,18 @@
                     $result = mysqli_query($conn,$sql);
                     $row = mysqli_fetch_assoc($result);
                     $email = $row['email'];
+                    $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                    VALUES ('transfer','$amount','$dateSend',1)";
+                    $result = mysqli_query($conn,$sql);
                     $content = "You have received $amount from $usernamesend";
-                    sendMail($email, $content);
+                    $subject = "Transfer";
+                    sendMail($email, $content, $subject);
                     echo "<script>alert('Transfer Successfully');window.location.href='../View/transfer.php';</script>";
                }
             } else {
+                
+                $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                VALUES ('transfer',0,'$dateSend',0)";
                 echo "<script>alert('Not enough money');window.location.href='../View/transfer.php';</script>";
             }
         }

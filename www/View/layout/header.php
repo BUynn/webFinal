@@ -20,6 +20,7 @@
                 if(mysqli_num_rows($result) > 0){
                     $row = mysqli_fetch_assoc($result);
                     $role = $row['role'];
+                   
                     if($role == 1){
         ?>  
       <ul class="nav navbar-nav navbar-right">
@@ -38,11 +39,16 @@
             </li>
             <li>
                 <li><a href="../View/transfer.php">Transfer Money</a></li>
-            </li>                 
+            </li> 
+            <li>
+                <li><a href="../View/buyPhoneCard.php">Buy Phone Card</a></li>
+            </li>                
             </ul>
         </li>
         
-       
+        <li class="active">
+                <li><a href="../View/transactionHistory.php">Transaction History</a></li>
+            </li>
         
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
@@ -86,35 +92,64 @@
             if(isset($_SESSION['username'])){
                         //select role
                 $username = $_SESSION['username'];
-                $sql = "SELECT role FROM __account WHERE username = '$username'";
+                $sql = "SELECT * FROM __account WHERE username = '$username'";
                 $result = mysqli_query($conn,$sql);
                 if(mysqli_num_rows($result) > 0){
                     $row = mysqli_fetch_assoc($result);
                     $role = $row['role'];
-                    if($role == 0){
-        ?> 
-           <ul class="nav navbar-nav navbar-right">
-       <li>
-           <li><a href="../View/changePWD.php">Change Password</a></li>
-       </li>
-       <li>
-           <li><a href="../View/recharge.php">Recharge</a></li>
-       </li>
-       
-       <li class="active">
-           <li><a href="../View/withDraw.php">Withdraw</a></li>
-       </li>
-       <li>
-           <li><a href="../View/transfer.php">Transfer Money</a></li>
-       </li>
-       <li>
-           <li><a href="../View/account_detail.php">My Profile</a> </li>
-       </li>
-       <li>
-           <li><a a href="../Controller/Logout.php">Log out </a> </li>
-       </li>
-     </ul> 
-     <?php
+                    $isActived = $row['isActived'];
+                    if($role == 0 && $isActived == 1){
+                ?> 
+                <ul class="nav navbar-nav navbar-right">
+        
+
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Transaction<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            <li>
+                    <li><a href="../View/transfer.php">Transfer Money</a></li>
+                </li>
+                <li class="active">
+                    <li><a href="../View/withDraw.php">Withdraw Money</a></li>
+                </li>
+                <li>
+                    <li><a href="../View/recharge.php">Recharge Money</a></li>
+                </li>  
+                <li>
+                    <li><a href="../View/buyPhoneCard.php">Buy Phone Card</a></li>
+                </li>                   
+            </ul>
+            </li>
+            <li>
+                <li><a href="../View/account_detail.php">Buy card history</a> </li>
+            </li>
+            <li>
+                <li><a href="../View/account_detail.php">My Profile</a> </li>
+            </li>
+            <li>
+                <li><a href="../View/changePWD.php">Change Password</a></li>
+            </li>
+            <li>
+                <li><a a href="../Controller/Logout.php">Log out </a> </li>
+            </li>
+            </ul> 
+            <?php
+                                } if($role == 0 && $isActived == 0){ 
+            ?>                 <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <li><a href="../View/changePWD.php">Change Password</a></li>
+                            </li>
+                            
+                        
+                            <li>
+                                <li><a href="../View/account_detail.php">My Profile</a> </li>
+                            </li>
+                            <li>
+                                <li><a a href="../Controller/Logout.php">Log out </a> </li>
+                            </li>
+                            </ul> 
+
+            <?php
                                 }
                             }
                         }

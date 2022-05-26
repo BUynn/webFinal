@@ -33,7 +33,9 @@
                     $sql = "INSERT INTO __historyrecharge(username,cardnumber,dateRecharge,value) 
                             VALUES ('".$_SESSION['username']."','$card','".date('Y-m-d')."','".$_POST['amount']."')";
                     $result = mysqli_query($conn,$sql);
-                    
+                    $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                    VALUES ('recharge','".$_POST['amount']."','".date('Y-m-d')."',1)";
+                    $result = mysqli_query($conn,$sql);
                     $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                     $result = mysqli_query($conn,$sql);
                    
@@ -42,6 +44,9 @@
                     }
                     else{
                         echo "<script>alert('Recharge fail');window.location.href='../View/recharge.php';</script>";
+                        $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                        VALUES ('recharge',0,'".date('Y-m-d')."',0)";
+                        $result = mysqli_query($conn,$sql);
                     }
                 } else{
                     echo "<script>alert('Maximum recharge is 1000000');window.location.href='../View/recharge.php';</script>";

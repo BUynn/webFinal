@@ -72,7 +72,8 @@
             
                 //send mail
                 $content = "Your username: ".$username."<br>Your password: ".$password;
-                SendMail($email, $content);
+                $title = "Your account has been created!";
+                SendMail($email, $content, $title);
                 //render to log in
                 header('Location: ../View/login.php');
             }    

@@ -54,6 +54,11 @@
                     } 
                   
                 }
+
+                //insert into __transactionhistory
+                $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                VALUES ('buycard','$temp','$date',1)";
+                $result = mysqli_query($conn,$sql);
                 //update money in __money
                 //select money in __money
                 $sql = "SELECT * FROM __money WHERE username = '$username'";
@@ -61,7 +66,7 @@
                 if(mysqli_num_rows($result) > 0){
                     $row = mysqli_fetch_assoc($result);
                     $money = $row['money'];
-                    if($temp - $money >= 0){
+                    if($money - $temp >= 0){
                         $sql = "UPDATE __money SET money = money - $temp WHERE username = '$username'";
                         $result = mysqli_query($conn,$sql);
                     } else {
@@ -72,6 +77,9 @@
                
                 echo "<script>alert('Buy Successfully');window.location.href='../View/buyPhoneCard.php';</script>";
             } else {
+                $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                VALUES ('buycard',0,'$date',0)";
+                $result = mysqli_query($conn,$sql);
                 echo "<script>alert('Not enough money');window.location.href='../View/buyPhoneCard.php';</script>";
             }
         }

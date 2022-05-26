@@ -42,8 +42,13 @@
                         
                 $result = mysqli_query($conn,$sql);
                 $content = "Your withdraw request has been accepted";
-                echo $email;
-                sendMail($email, $content);
+                //echo $email;
+                $title = "Withdraw request accepted";
+                $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                VALUES('Withdraw','$amount','$currentDate',1)";
+                               
+                $result = mysqli_query($conn,$sql);
+                sendMail($email, $content, $title);
                 echo "<script>alert('Withdraw Successfully');window.location.href='../View/acceptWithDraw.php';</script>";
              } else {
                  echo "<script>alert('User not enough money');window.location.href='../View/acceptWithDraw.php';</script>";
@@ -62,8 +67,12 @@
         $result_getEmail = mysqli_query($conn,$getEmail);
         $row_getEmail = mysqli_fetch_assoc($result_getEmail);
         $email = $row_getEmail['email'];
+        $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+        VALUES('Withdraw','$amount','$currentDate',0)";
+        $result = mysqli_query($conn,$sql);
         $content = "Your withdraw request has been denied! Please contact admin for more information";
-        sendMail($email, $content);
+        $title = "Withdraw request denied";
+        sendMail($email, $content, $title);
         echo "<script>alert('Success');window.location.href='../View/acceptWithDraw.php';</script>";
     }
     

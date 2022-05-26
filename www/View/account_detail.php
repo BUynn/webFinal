@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View account</title>
+    <title>My Profile</title>
     <style>
         body {
     background: rgb(99, 39, 120)

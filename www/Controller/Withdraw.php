@@ -55,11 +55,18 @@
                                 $sql = "UPDATE __mycard SET money = money + $amount, date = '$currentDate', times = $timesWithdraw - 1 WHERE cardNumber = '$_POST[card]'";
                                         
                                 $result = mysqli_query($conn,$sql);
+                                $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                                VALUES ('Withdraw','$amount','$currentDate',1)";
+                                $result = mysqli_query($conn,$sql);
+                               
                                 
                            }
                             echo "<script>alert('Withdraw Successfully');window.location.href='../View/withdraw.php';</script>";
                         } else {
                             echo "<script>alert('Not enough money');window.location.href='../View/withdraw.php';</script>";
+                            $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
+                                VALUES ('Withdraw',0,'$currentDate',0)";
+                            $result = mysqli_query($conn,$sql);
                         }
                     }
                     

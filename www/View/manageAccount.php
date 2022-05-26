@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View account</title>
+    <title>Manage account</title>
     <style>
         table,tr, th,thead,tbody, td {
         border:1px solid black;
