@@ -22,7 +22,7 @@
     <table>
         <thead>
             <tr>
-                <th scope="col">Id</th>
+                <th scope="col">ID</th>
                 <th scope="col">Transaction Type</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Excution Type</th>

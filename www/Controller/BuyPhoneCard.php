@@ -78,7 +78,7 @@
                 echo "<script>alert('Buy Successfully');window.location.href='../View/buyPhoneCard.php';</script>";
             } else {
                 $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
-                VALUES ('buycard',0,'$date',0)";
+                VALUES ('Buy card',0,'$date',0)";
                 $result = mysqli_query($conn,$sql);
                 echo "<script>alert('Not enough money');window.location.href='../View/buyPhoneCard.php';</script>";
             }

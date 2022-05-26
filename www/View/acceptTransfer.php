@@ -16,7 +16,7 @@
     <div class="back">
         <a href="../View/home.php">Back</a>
     </div>
-    <h3>Trade List Wait For Accept</h3>
+    <h3>Transfer List Wait For Accept</h3>
     <table>
         <thead>
             <tr>
@@ -39,7 +39,7 @@
             <?php endforeach; ?>    
        </tbody>
     </table>
-    <h3>Trade Accept</h3>
+    <h3>Transfer List Accepted</h3>
     <table>
         <thead>
             <tr>
@@ -62,7 +62,7 @@
        </tbody>
     </table>
 
-    <h3>Trade Deny</h3>
+    <h3>Transfer List Denied</h3>
     <table>
         <thead>
             <tr>

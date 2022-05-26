@@ -40,7 +40,7 @@
                     $row = mysqli_fetch_assoc($result);
                     $email = $row['email'];
                     $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
-                    VALUES ('transfer','$amount','$dateSend',1)";
+                    VALUES ('Transfer','$amount','$dateSend',1)";
                     $result = mysqli_query($conn,$sql);
                     $content = "You have received $amount from $usernamesend";
                     $subject = "Transfer";

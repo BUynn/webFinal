@@ -45,7 +45,7 @@
                     else{
                         echo "<script>alert('Recharge fail');window.location.href='../View/recharge.php';</script>";
                         $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
-                        VALUES ('recharge',0,'".date('Y-m-d')."',0)";
+                        VALUES ('Recharge',0,'".date('Y-m-d')."',0)";
                         $result = mysqli_query($conn,$sql);
                     }
                 } else{

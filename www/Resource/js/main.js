@@ -1,3 +1,12 @@
+
+  const toggleForm = () => {
+    const container = document.querySelector('.container');
+    container.classList.toggle('active');
+  };
+
+
+
+
 (function($) { // Begin jQuery
     $(function() { // DOM ready
       // If a link has a dropdown, add sub menu toggle.
@@ -21,3 +30,15 @@
       });
     }); // end DOM ready
   })(jQuery); // end jQuery
+
+  function showDetail(username, email, phone, dob, isavtive) {
+    $("#modal-detail-user .modal-body #username-modal").val(username);
+    $("#modal-detail-user .modal-body #email-modal").val(email);
+    $("#modal-detail-user .modal-body #phone-modal").val(phone);
+    $("#modal-detail-user .modal-body #dob-modal").val(dob);
+    if (isavtive == 1) {
+        $("#modal-detail-user .modal-body #status-modal").val("Actived");
+    } else if (isavtive == 0){
+      $("#modal-detail-user .modal-body #status-modal").val("Waiting for active");
+    }
+}
