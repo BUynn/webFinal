@@ -46,9 +46,10 @@
             </ul>
         </li>
         
+       
         <li class="active">
                 <li><a href="../View/transactionHistory.php">Transaction History</a></li>
-            </li>
+        </li>
         
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage<b class="caret"></b></a>
@@ -61,7 +62,10 @@
             </li>  
             <li>
                 <a href="../View/acceptTransfer.php">Manage Transfer List</a> 
-            </li>                   
+            </li>     
+            <li class="active">
+                <li><a href="../View/additionalInformation.php">Request Additional Information</a></li>
+            </li>              
             </ul>
         </li>
         
@@ -134,7 +138,7 @@
             </li>
             </ul> 
             <?php
-                                } if($role == 0 && $isActived == 0){ 
+                                } if($role == 0 && $isActived == 0 || $role == 0 && $isActived == 2){ 
             ?>                 <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <li><a href="../View/changePWD.php">Change Password</a></li>

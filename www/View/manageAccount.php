@@ -35,7 +35,7 @@
                 $param = "'" . $account['username'] . "','" . $account['email'] . "','" . $account['phone'] . "','" . $account['dob'] . "'," . $account['isActived'];
             ?>
             <tr>
-                <!-- <form action="../Model/ActiveAccount.php?username=<?php echo $account['username']?>" method="post"> -->
+                <form action="../Model/ActiveAccount.php?username=<?php echo $account['username']?>" method="post">
                     <td><?php echo $account['username']; ?></td>
                     <td><?php echo $account['email']; ?></td>
                     <td>Waiting for activation</td>
@@ -44,7 +44,7 @@
                     </td>
                     <td><input type="submit" name="active" value="Active" class="profile-button"></td>
                     <td><input type="submit" name="deny" value="Deny" class="profile-button"></td>
-                <!-- </form> -->
+                </form>
             </tr>
             <?php endforeach; ?>    
        </tbody>

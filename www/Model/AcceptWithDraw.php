@@ -1,11 +1,11 @@
 <?php
     require('../Controller/Config.php');
     require('../Controller/SendMail.php');
-    $sql = "SELECT * FROM __accepwithdraw WHERE isAccepted = 0";
+    $sql = "SELECT * FROM __accepwithdraw WHERE isAccepted = 0 order by date desc";
     $result = mysqli_query($conn,$sql);
-    $sql1 = "SELECT * FROM __accepwithdraw WHERE isAccepted = 2";
+    $sql1 = "SELECT * FROM __accepwithdraw WHERE isAccepted = 2 order by date desc";
     $result1 = mysqli_query($conn,$sql1);
-    $sql2 = "SELECT * FROM __accepwithdraw WHERE isAccepted = 1";
+    $sql2 = "SELECT * FROM __accepwithdraw WHERE isAccepted = 1 order by date desc";
     $result2 = mysqli_query($conn,$sql2);
     if(isset($_POST['accept'])){
         $id = $_GET['withdraw'];
@@ -75,6 +75,4 @@
         sendMail($email, $content, $title);
         echo "<script>alert('Success');window.location.href='../View/acceptWithDraw.php';</script>";
     }
-    
-
 ?>

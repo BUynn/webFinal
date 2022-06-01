@@ -59,7 +59,7 @@
                 $sql = "UPDATE __money SET money = money + ".$_POST['amount']." WHERE username = '".$_SESSION['username']."'";
                 $result = mysqli_query($conn,$sql);
                
-              
+                //insert to my
                 echo "<script>alert('Card is out of money');window.location.href='../View/recharge.php';</script>";
                
             }

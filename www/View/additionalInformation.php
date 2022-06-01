@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Withdraw</title>
+    <title>Additional Information</title>
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script   script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -18,26 +18,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <form action="../Controller/Withdraw.php" method="POST">
+                <form action="../Controller/AdditionalInformation.php" method="POST">
                 <div class="form-group">
-                    <label for="">Card Number</label>
-                    <input type="text" class="form-control" name="card" placeholder="Enter card number" required>
+                    <label for="">Account Need To Additional Information</label>
+                    <input type="text" class="form-control" name="account" placeholder="Enter account" required >
+                   
                 </div>
                 <div class="form-group">
-                    <label for="">Expiration</label>
-                    <input type="date" class="form-control" name="expiration" placeholder="Enter Expiration" required>
-                </div>
-                <div class="form-group">
-                    <label for="">CVV</label>
-                    <input type="text" class="form-control" name="cvv" placeholder="Enter cvv" required>
-                </div>
-                <div class="form-group">
-                    <label for="">Amount</label>
-                    <input type="text" class="form-control" name="amount" placeholder="Enter amount" required>
+                    <label for="">Issue</label>
+                    <input type="text" class="form-control" name="amount" placeholder="Enter issue" required>
                 </div>
                 <div class="form-group">
                    
-                    <input type="submit" class="form-control" name="recharge" placeholder="Recharge">
+                    <input type="submit" class="form-control" name="submit" placeholder="Recharge" >
                     <div class="back">
                         <a href="../View/home.php">Back</a>
                     </div>
@@ -45,5 +38,5 @@
                 </form>
         </div>
     </div>
-    </body>
+</body>
 </html>

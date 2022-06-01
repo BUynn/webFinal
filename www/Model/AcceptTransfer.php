@@ -36,9 +36,13 @@
             $email = $row['email'];
             $sql = "INSERT INTO __transactionhistory(transactiontype,amount,executiontime,status)
             VALUES ('transfer','$moneyTransfer',NOW(),1)";
-                               
+            //CREATE OPT WITH 6 number
+            // $opt = rand(100000,999999);
+            // //insert into __isOTP
+            // $sql = "INSERT INTO __isotp(username,opt,date) VALUES ('$usernameSend','$opt',NOW())";
             $result = mysqli_query($conn,$sql);
             sendMail($email,$moneyTransfer,$usernameSend);
+
             echo "<script>alert('Success');window.location.href='../View/acceptTransfer.php';</script>";
         }
 
