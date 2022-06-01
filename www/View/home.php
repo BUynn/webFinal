@@ -1,4 +1,7 @@
+<?php
 
+    require "../Controller/CheckLogin.php";
+?>
 <!DOCTYPE html>
 <html>
     

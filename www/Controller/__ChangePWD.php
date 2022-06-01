@@ -18,7 +18,7 @@
                     $result = mysqli_query($conn,$sql);
                     if($result){
                         //render to home
-                        echo "<script>alert('Success');window.location.href='../View/home.php';</script>";
+                        echo "<script>alert('Success');window.location.href='../View/login.php';</script>";
                     }else{
                         echo "<script>alert('Change password fail');window.location.href='../View/changeFirstPassword.php';</script>";
                     }
