@@ -20,7 +20,8 @@
     <?php
         require 'layout/header.php';
     ?>
-   
+
+    <img style="width: 100%; height: 745px; top: 51px"src="3.png" alt="">
 </body>
 </html>
 

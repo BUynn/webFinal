@@ -8,7 +8,8 @@
     <link rel="icon" href="../Resource/image/profile.png" type="image/icon type">
     <style>
         body {
-    background: rgb(99, 39, 120)
+    /* background: rgb(99, 39, 120) */
+    background-image: url("6.png")
 }
 
 .form-control:focus {
