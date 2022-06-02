@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>My Profile</title>
+    <link rel="icon" href="../Resource/image/profile.png" type="image/icon type">
     <style>
         body {
     background: rgb(99, 39, 120)
@@ -50,6 +51,7 @@
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -57,7 +59,7 @@
 </head>
 <body>
     <div class="back">
-        <a href="../View/home.php">Back</a>
+        <a href="../View/home.php" class="btn btn-outline-primary mt-2 mx-2">Back</a>
     </div>
     <form action="../Model/ViewAccount.php" method="post"></form>
         <div class="container rounded bg-white mt-5 mb-5">
@@ -66,9 +68,9 @@
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"><?php echo $username ?></span><span class="text-black-50"><?php echo $email ?></span><span> </span></div>
                 </div>
                 <div class="col-md-5 border-right">
-                    <div class="p-3 py-5">
+                    <div class="p-2 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Profile Settings</h4>
+                            <h4 class="text-center text-secondary">Profile Settings</h4>
                         </div>
                         <div class="row mt-2">
                             
@@ -80,10 +82,11 @@
                             <div class="col-md-12"><label class="labels">Date of Birth</label></label><input type="text" class="form-control" placeholder="enter address line 1" value="<?php echo $dob ?>" disabled></div>
                             <div class="col-md-12"><label class="labels">Status</label></label><input type="text" class="form-control" placeholder="enter address line 1" value="<?php echo $status ?>" disabled></div>
 
+                        </div>             
+                        <div class="row mt-3">
                             <image src="<?php echo $image_front_id ?>"> </image>
                             <image src="<?php echo $image_back_id ?>"> </image>
-                            
-                        </div>                        
+                        </div>           
                     </div>
                 </div>
             </div>

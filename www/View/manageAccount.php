@@ -8,6 +8,14 @@
     <style>
         table,tr, th,thead,tbody, td {
         border:1px solid black;
+        padding: 0px 15px 3px 3px;
+        margin-left: 10px;
+    }
+    .back a{
+        text-decoration: none;
+    }
+    h2{
+        padding-left: 10px;
     }
 </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -19,9 +27,9 @@
 </head>
 <body>
     <div class="back">
-        <a href="../View/home.php">Back</a>
+        <a href="../View/home.php" class="btn btn-outline-primary mb-3 mt-2 mx-2">Back</a>
     </div>
-    <h2>Accounts wait for actived</h2>
+    <h2>Accounts wait for active.</h2>
     <table>
         <thead>
             <tr>
@@ -42,14 +50,14 @@
                     <td>
                         <a onclick="showDetail(<?php echo $param ?>)" class="dropdown-item" role="button" data-toggle="modal" data-target="#modal-detail-user">View</a>
                     </td>
-                    <td><input type="submit" name="active" value="Active" class="profile-button"></td>
-                    <td><input type="submit" name="deny" value="Deny" class="profile-button"></td>
+                    <td><input type="submit" name="active" value="Active" class="profile-button btn btn-outline-success fw-bold"></td>
+                    <td><input type="submit" name="deny" value="Deny" class="profile-button btn btn-outline-danger fw-bold"></td>
                 </form>
             </tr>
             <?php endforeach; ?>    
        </tbody>
     </table>
-    <h2>Accounts have been actived</h2>
+    <h2>Accounts have been active.</h2>
     <table>
         <thead>
             <tr>
@@ -63,20 +71,22 @@
                  $param = "'" . $account['username'] . "','" . $account['email'] . "','" . $account['phone'] . "','" . $account['dob'] . "'," . $account['isActived'];
             ?>
                 <form action="../View/anAccountDetail.php?username=<?php echo $account['username']?>" method="post">
-                    <td><?php echo $account['username']; ?></td>
-                    <td><?php echo $account['email']; ?></td>
-                    <td>Activated</td>
-                    <!-- <td><input type="submit" name="view" value="View" class="profile-button"></td> -->
-                    <td>
-                        <a onclick="showDetail(<?php echo $param ?>)" class="dropdown-item" role="button" data-toggle="modal" data-target="#modal-detail-user">View</a>
-                    </td>
+                    <tr>
+                        <td><?php echo $account['username']; ?></td>
+                        <td><?php echo $account['email']; ?></td>
+                        <td>Activated</td>
+                        <!-- <td><input type="submit" name="view" value="View" class="profile-button"></td> -->
+                        <td>
+                            <a onclick="showDetail(<?php echo $param ?>)" class="dropdown-item" role="button" data-toggle="modal" data-target="#modal-detail-user">View</a>
+                        </td>
+                    </tr>
                 </form>
             <?php endforeach; ?>    
        </tbody>
     </table>
 
   
-    <h2>Accounts have been blocked</h2>
+    <h2>Accounts have been blocked.</h2>
     <table>
         <thead>
             <tr>
@@ -97,14 +107,16 @@
                     <td>
                         <a onclick="showDetail(<?php echo $param ?>)" class="dropdown-item" role="button" data-toggle="modal" data-target="#modal-detail-user">View</a>
                     </td>
-                    <td><input type="submit" name="unblock" value="Unblock" class="profile-button"></td>
+                    <td>
+                        <input type="submit" name="unblock" value="Unblock" class="profile-button btn btn-outline-secondary fw-bold">
+                    </td>
                 </form>
             <?php endforeach; ?>    
        </tbody>
     </table>
 
 
-    <h2>Accounts have been disabled</h2>
+    <h2>Accounts have been disabled.</h2>
     <table>
         <thead>
             <tr>

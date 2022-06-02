@@ -8,10 +8,22 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        table,tr, th,thead,tbody, td {
+            border: 1px solid black;
+            padding: 0px 15px 3px 0px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        td, th, h3{
+            padding: 7px;
+        }
+    </style>
 </head>
 <body>
     <div class="back">
-        <a href="../View/home.php">Back</a>
+        <a href="../View/home.php" class="btn btn-outline-primary mt-2 mx-2">Back</a>
     </div>
     <h3>Withdraw List Wait For Accept</h3>
     <table>
@@ -31,8 +43,8 @@
                         <td><?php echo $account['cardnumber']; ?></td>
                         <td><?php echo $account['money']; ?></td>
                         <td><?php echo $account['date']; ?></td>
-                        <td><input type="submit" name="accept" value="Accept Trade" class="profile-button"></td>
-                        <td><input type="submit" name="deny" value="Deny Trade" class="profile-button"></td>
+                        <td><input type="submit" name="accept" value="Accept Trade" class="profile-button btn btn-outline-success fw-bold"></td>
+                        <td><input type="submit" name="deny" value="Deny Trade" class="profile-button btn btn-outline-danger fw-bold"></td>
                     </form>
                 </tr>
             <?php endforeach; ?>    

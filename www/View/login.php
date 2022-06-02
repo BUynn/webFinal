@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Sign in and Sign up</title>
+    <link rel="icon" href="../Resource/image/logo_title.png" type="image/icon type">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Resource/css/login.css">

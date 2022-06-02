@@ -47,7 +47,8 @@
                    
                     <input type="submit" class="form-control" name="changePassword" placeholder="Change Password" >
                     <div class="back">
-                        <a href="../View/home.php">Back</a>
+                        <br>
+                        <a href="../View/home.php" class="btn btn-primary">Back</a>
                     </div>
                 </div>
                 </form>

@@ -7,8 +7,16 @@
     <title>Transaction Histoy</title>
     <style>
         table,tr, th,thead,tbody, td {
-        border:1px solid black;
-    }
+            border: 1px solid black;
+            padding: 0px 15px 3px 0px;
+            text-align: center;
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        td, th, h2{
+            padding: 7px;
+        }
 </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,7 +24,7 @@
 </head>
 <body>
     <div class="back">
-        <a href="../View/home.php">Back</a>
+        <a href="../View/home.php" class="btn btn-outline-primary mx-2 mt-2">Back</a>
     </div>
     <h2>Transaction Histoy</h2>
     <table>
@@ -32,12 +40,14 @@
        <tbody>
             <?php foreach($result as $account): ?>
                 <form action="" method="post">
-                    <td><?php echo $account['id']; ?></td>
-                    <td><?php echo $account['transactiontype']; ?></td>
-                    <td><?php echo $account['amount']; ?></td>
-                    <td><?php echo $account['executiontime']; ?></td>
-                    <td><?php echo $status; ?></td>
-                    <td><input type="submit" name="view" value="view" class="profile-button"></td>
+                    <tr>
+                        <td><?php echo $account['id']; ?></td>
+                        <td><?php echo $account['transactiontype']; ?></td>
+                        <td><?php echo $account['amount']; ?></td>
+                        <td><?php echo $account['executiontime']; ?></td>
+                        <td><?php echo $status; ?></td>
+                        <td><input type="submit" name="view" value="view" class="profile-button btn btn-outline-secondary fw-bold"></td>
+                    </tr>
                 </form>
             <?php endforeach; ?>    
        </tbody>

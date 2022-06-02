@@ -7,6 +7,7 @@
     
 <head>
     <title>Home</title>
+    <link rel="icon" href="../Resource/image/home.png" type="image/icon type">
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script   script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
@@ -15,7 +16,6 @@
     <link rel="stylesheet" href="../Resource/css/style.css">
     <script src="../Resource/js/main.js"></script>
     
-   
 <body>
     <?php
         require 'layout/header.php';

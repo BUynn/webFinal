@@ -39,7 +39,8 @@
                    
                     <input type="submit" class="form-control" name="recharge" placeholder="Recharge">
                     <div class="back">
-                        <a href="../View/home.php">Back</a>
+                        <br>
+                        <a href="../View/home.php" class="btn btn-primary">Back</a>
                     </div>
 
                 </div>
